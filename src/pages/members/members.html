@@ -14,5 +14,9 @@
 
 
 <ion-content padding>
-  Welcome, {{ name }}
+  <ion-list nolines>
+    <ion-item *ngFor="let m of data">
+      {{m.id}} - {{m.name}}
+    </ion-item>
+  </ion-list>
 </ion-content>

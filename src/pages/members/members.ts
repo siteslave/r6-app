@@ -17,14 +17,16 @@ export class MembersPage {
 
   id: any;
   name: string;
+  data: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // console.log(this.navParams.get('id'));
     // this.id = this.navParams.data.id;
     // this.name = this.navParams.data.name;
 
-    this.id = this.navParams.get('id');
-    this.name = this.navParams.get('name');
+    this.data = this.navParams.get('data');
+
+    console.log(this.data);
   }
 
   ionViewDidLoad() {

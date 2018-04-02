@@ -25,9 +25,12 @@ export class DashboardPage {
   // }
 
   goMembers() {
-    let params = { id: 2, name: 'Bill Gate' };
+    let params = [
+      { id: 1, name: 'John Doe' },
+      { id: 2, name: 'Bill Gate' }
+    ];
 
-    this.navCtrl.push(MembersPage, params);
+    this.navCtrl.push(MembersPage, { data: params });
   }
 
   goSettings() {
