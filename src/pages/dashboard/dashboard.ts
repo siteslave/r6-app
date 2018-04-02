@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MembersPage } from '../members/members';
+import { SettingsPage } from '../settings/settings';
 
 /**
  * Generated class for the DashboardPage page.
@@ -18,8 +20,16 @@ export class DashboardPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad DashboardPage');
+  // }
+
+  goMembers() {
+    this.navCtrl.push(MembersPage);
+  }
+
+  goSettings() {
+    this.navCtrl.push(SettingsPage);
   }
 
 }

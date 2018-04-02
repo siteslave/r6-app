@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>Dashboard</ion-title>
   </ion-navbar>
 
@@ -16,11 +16,11 @@
 <ion-content padding>
 
 <ion-list no-lines>
-  <button ion-item>
+  <button ion-item (click)="goMembers()">
     <ion-icon color="primary" name="contacts"></ion-icon>
     สมาชิก
   </button>
-  <button ion-item>
+  <button ion-item (click)="goSettings()">
     <ion-icon color="danger" name="settings"></ion-icon>
     ตั้งค่า
   </button>
