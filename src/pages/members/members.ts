@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MemberProvider } from '../../providers/member/member';
 
 /**
  * Generated class for the MembersPage page.
@@ -19,14 +20,29 @@ export class MembersPage {
   name: string;
   data: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private memberProvider: MemberProvider
+  ) {
     // console.log(this.navParams.get('id'));
     // this.id = this.navParams.data.id;
     // this.name = this.navParams.data.name;
 
-    this.data = this.navParams.get('data');
+    // this.data = this.navParams.get('data');
 
-    console.log(this.data);
+    // console.log(this.data);
+  }
+
+  ionViewWillEnter() {
+    this.getMembers();
+  } 
+
+  getMembers() {
+    this.memberProvider.getMembers().subscribe((data: any) => {
+        console.log(data);
+        this.data = data.results;
+      });
   }
 
   ionViewDidLoad() {

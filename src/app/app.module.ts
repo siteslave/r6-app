@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { DashboardPageModule } from '../pages/dashboard/dashboard.module';
 import { MembersPageModule } from '../pages/members/members.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
+import { MemberProvider } from '../providers/member/member';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { SettingsPageModule } from '../pages/settings/settings.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     DashboardPageModule,
     MembersPageModule,
     SettingsPageModule,
@@ -30,7 +33,8 @@ import { SettingsPageModule } from '../pages/settings/settings.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MemberProvider
   ]
 })
 export class AppModule {}
