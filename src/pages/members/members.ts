@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MemberProvider } from '../../providers/member/member';
 
 /**
@@ -23,7 +23,8 @@ export class MembersPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private memberProvider: MemberProvider
+    private memberProvider: MemberProvider,
+    private loadingCtrl: LoadingController
   ) {
     // console.log(this.navParams.get('id'));
     // this.id = this.navParams.data.id;
@@ -39,10 +40,18 @@ export class MembersPage {
   } 
 
   getMembers() {
+    let loading = this.loadingCtrl.create({
+      content: 'รอซักครู่...'
+    });
+
+    loading.present();
+
     this.memberProvider.getMembers().subscribe((data: any) => {
-        console.log(data);
-        this.data = data.results;
-      });
+      // console.log(data);
+      this.data = data.results;
+      loading.dismiss();
+    });
+  
   }
 
   ionViewDidLoad() {
