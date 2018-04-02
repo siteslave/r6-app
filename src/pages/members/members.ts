@@ -19,12 +19,12 @@ export class MembersPage {
   name: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log(this.navParams.data);
-    this.id = this.navParams.data.id;
-    this.name = this.navParams.data.name;
+    // console.log(this.navParams.get('id'));
+    // this.id = this.navParams.data.id;
+    // this.name = this.navParams.data.name;
 
-    // this.id = this.navParams.get('id');
-    // this.name = this.navParams.get('name');
+    this.id = this.navParams.get('id');
+    this.name = this.navParams.get('name');
   }
 
   ionViewDidLoad() {
