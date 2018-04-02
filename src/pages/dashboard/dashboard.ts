@@ -25,7 +25,7 @@ export class DashboardPage {
   // }
 
   goMembers() {
-    this.navCtrl.push(MembersPage);
+    this.navCtrl.push(MembersPage, { id: 2, name: 'Bill Gate' });
   }
 
   goSettings() {
