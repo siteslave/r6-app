@@ -13,9 +13,15 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-<div id="myChart" style="display: block;"></div>
+<ion-slides autoplay="2000" pager style="height: 300px;">
+
+  <ion-slide>
+    <my-chart chartType="column"></my-chart>
+  </ion-slide>
+
+</ion-slides>
 
 <ion-list no-lines>
   <button ion-item (click)="goMembers()" icon-start>
