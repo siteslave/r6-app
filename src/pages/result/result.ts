@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { KpiProvider } from '../../providers/kpi/kpi';
 import { MyChartComponent } from '../../components/my-chart/my-chart';
 
@@ -21,7 +21,8 @@ export class ResultPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private kpiProvider: KpiProvider
+    private kpiProvider: KpiProvider,
+    private loadingCtrl: LoadingController
   ) {
     this.kpiId = this.navParams.get('id');
     this.kpiName = this.navParams.get('title');
@@ -32,6 +33,13 @@ export class ResultPage implements OnInit {
   }
 
   getResult(kpiId: any) {
+
+    let loading = this.loadingCtrl.create({
+      content: 'กรุณารอซักครู่...'
+    });
+
+    loading.present();
+
     this.kpiProvider.getResult(kpiId)
       .subscribe((data: any) => {
         this.categories = data.area;
@@ -40,6 +48,8 @@ export class ResultPage implements OnInit {
         ];
 
         this.chart.doCreateChart(this.series, this.categories);
+
+        loading.dismiss();
       });
   }
 
