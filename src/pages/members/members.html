@@ -16,6 +16,8 @@
 <ion-content>
   <ion-list no-lines>
     <ion-item *ngFor="let member of data">
+      <ion-badge item-end color="danger" *ngIf="member.gender === 'female'">F</ion-badge>
+      <ion-badge item-end color="primary" *ngIf="member.gender === 'male'">M</ion-badge>
       <ion-avatar item-start>
         <img [src]="member.picture.medium">
       </ion-avatar>
