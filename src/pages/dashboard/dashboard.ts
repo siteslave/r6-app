@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MembersPage } from '../members/members';
 import { SettingsPage } from '../settings/settings';
+import { KpiPage } from '../kpi/kpi';
 
 @IonicPage()
 @Component({
@@ -49,6 +50,10 @@ export class DashboardPage {
 
   goSettings() {
     this.navCtrl.push(SettingsPage);
+  }
+
+  goKpi() {
+    this.navCtrl.push(KpiPage);
   }
 
 } // end class

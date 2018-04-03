@@ -8,18 +8,31 @@ import * as HighCharts from 'highcharts';
 export class MyChartComponent implements OnInit {
 
   _chartType: any;
+  _categories = [];
+  _series = [];
+  _chartTitle = 'ตัวอย่าง Chart';
 
   @Input('chartType')
-  set chartType(value: any) {
+  set setChartType(value: any) {
     this._chartType = value;
+  }
+  
+  @Input('categories')
+  set setCategories(value: any) {
+    this._categories = value;
+  }
+  
+  @Input('series')
+  set setSeries(value: any) {
+    this._series = value;
+  }
+  
+  @Input('chartTitle')
+  set setChartTitle(value: any) {
+    this._chartTitle = value;
   }
 
   @Input('chartId') chartId;
-
-  @Input('categories') categories = [];
-  @Input('series') series = [];
-
-  @Input('chartTitle') chartTitle = 'ตัวอย่าง Chart';
 
   constructor() { }
 
@@ -34,18 +47,39 @@ export class MyChartComponent implements OnInit {
       },
       credits: { enabled: false },
       title: {
-        text: this.chartTitle
+        text: this._chartTitle
       },
       xAxis: {
-        categories: this.categories
+        categories: this._categories
       },
       yAxis: {
         title: {
           text: null
         }
       },
-      series: this.series
+      series: this._series
     });
   }
 
+  doCreateChart(series: any, categories: any) {
+    var myChart = HighCharts.chart(this.chartId, {
+      chart: {
+        type: this._chartType
+      },
+      credits: { enabled: false },
+      title: {
+        text: this._chartTitle
+      },
+      xAxis: {
+        categories: categories
+      },
+      yAxis: {
+        title: {
+          text: null
+        }
+      },
+      series: series
+    });
+  }
+  
 }

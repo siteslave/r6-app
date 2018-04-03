@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>ตัวชี้วัด</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-list no-lines>
+    <ion-list-header>
+      ระดับจังหวัด
+    </ion-list-header>
+    <button ion-item *ngFor="let kpi of kpis" (click)="goResult(kpi)">
+      <h2>{{ kpi.kpi_no }} - {{ kpi.title }}</h2>
+      <p>เป้าหมาย ({{ kpi.kpi_unit }}) {{ kpi.operator }}{{ kpi.goal }}</p>
+      <ion-badge color="danger" item-end>{{ kpi.result }}</ion-badge>
+    </button>
+  </ion-list>
+  
+</ion-content>

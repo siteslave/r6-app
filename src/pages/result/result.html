@@ -1,0 +1,22 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{kpiId}} - {{kpiName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <my-chart id="chart19" #chart
+    style="display: block;" 
+    chartId="chart19" 
+    chartType="column" 
+    [chartTitle]="kpiName"
+    [categories]="categories" 
+    [series]="series">
+  </my-chart>
+
+</ion-content>

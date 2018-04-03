@@ -11,6 +11,9 @@ import { MembersPageModule } from '../pages/members/members.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { MemberProvider } from '../providers/member/member';
 import { HttpClientModule } from '@angular/common/http';
+import { KpiPageModule } from '../pages/kpi/kpi.module';
+import { KpiProvider } from '../providers/kpi/kpi';
+import { ResultPageModule } from '../pages/result/result.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardPageModule,
     MembersPageModule,
     SettingsPageModule,
+    KpiPageModule,
+    ResultPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -34,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MemberProvider
+    MemberProvider,
+    KpiProvider
   ]
 })
 export class AppModule {}
