@@ -3,12 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MembersPage } from '../members/members';
 import { SettingsPage } from '../settings/settings';
 
-/**
- * Generated class for the DashboardPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as HighCharts from 'highcharts';
 
 @IonicPage()
 @Component({
@@ -24,6 +19,10 @@ export class DashboardPage {
   //   console.log('ionViewDidLoad DashboardPage');
   // }
 
+  ionViewWillEnter() {
+    this.createChart();
+  }
+
   goMembers() {
     let params = [
       { id: 1, name: 'John Doe' },
@@ -37,4 +36,30 @@ export class DashboardPage {
     this.navCtrl.push(SettingsPage);
   }
 
-}
+  createChart() {
+    var myChart = HighCharts.chart('myChart', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Fruit Consumption'
+      },
+      xAxis: {
+        categories: ['Apples', 'Bananas', 'Oranges']
+      },
+      yAxis: {
+        title: {
+          text: 'Fruit eaten'
+        }
+      },
+      series: [{
+        name: 'Jane',
+        data: [1, 0, 4]
+      }, {
+        name: 'John',
+        data: [5, 7, 3]
+      }]
+    });
+  }
+
+} // end class
