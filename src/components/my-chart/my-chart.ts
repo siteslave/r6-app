@@ -13,7 +13,10 @@ export class MyChartComponent implements OnInit {
   set chartType(value: any) {
     this._chartType = value;
   }
-    
+
+  @Input('chartId') chartId;
+  @Input('chartTitle') chartTitle = 'ตัวอย่าง Chart';
+
   constructor() { }
 
   ngOnInit() {
@@ -21,13 +24,13 @@ export class MyChartComponent implements OnInit {
   }
 
   createChart() {
-    var myChart = HighCharts.chart('myChart', {
+    var myChart = HighCharts.chart(this.chartId, {
       chart: {
         type: this._chartType
       },
       credits: { enabled: false },
       title: {
-        text: 'Fruit Consumption'
+        text: this.chartTitle
       },
       xAxis: {
         categories: ['Apples', 'Bananas', 'Oranges']
