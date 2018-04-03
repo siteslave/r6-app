@@ -15,6 +15,10 @@ export class MyChartComponent implements OnInit {
   }
 
   @Input('chartId') chartId;
+
+  @Input('categories') categories = [];
+  @Input('series') series = [];
+
   @Input('chartTitle') chartTitle = 'ตัวอย่าง Chart';
 
   constructor() { }
@@ -33,20 +37,14 @@ export class MyChartComponent implements OnInit {
         text: this.chartTitle
       },
       xAxis: {
-        categories: ['Apples', 'Bananas', 'Oranges']
+        categories: this.categories
       },
       yAxis: {
         title: {
-          text: 'Fruit eaten'
+          text: null
         }
       },
-      series: [{
-        name: 'Jane',
-        data: [1, 0, 4]
-      }, {
-        name: 'John',
-        data: [5, 7, 3]
-      }]
+      series: this.series
     });
   }
 
