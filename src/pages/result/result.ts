@@ -18,19 +18,6 @@ export class ResultPage implements OnInit {
   categories: any = [];
   series: any = [];
 
-  // categories: any = ["สมุทรปราการ",
-  //   "ชลบุรี",
-  //   "ระยอง",
-  //   "จันทบุรี",
-  //   "ตราด",
-  //   "ฉะเชิงเทรา",
-  //   "ปราจีนบุรี",
-  //   "สระแก้ว"];
-  // series: any = [{
-  //   name: 'xxx',
-  //   data:[70.98, 64.66, 69.13, 68.07, 65.07, 72.87, 64.09, 68.44]
-  // }];
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -51,19 +38,6 @@ export class ResultPage implements OnInit {
         this.series = [
           { name: 'ร้อยละ', data: data.result }
         ];
-
-        // this.categories = ["สมุทรปราการ",
-        //   "ชลบุรี",
-        //   "ระยอง",
-        //   "จันทบุรี",
-        //   "ตราด",
-        //   "ฉะเชิงเทรา",
-        //   "ปราจีนบุรี",
-        //   "สระแก้ว"];
-        // this.series = [{
-        //   name: 'xxx',
-        //   data: [70.98, 64.66, 69.13, 68.07, 65.07, 72.87, 64.09, 68.44]
-        // }];
 
         this.chart.doCreateChart(this.series, this.categories);
       });

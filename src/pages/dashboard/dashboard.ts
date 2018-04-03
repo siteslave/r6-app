@@ -53,6 +53,7 @@ export class DashboardPage {
   }
 
   goKpi() {
+    sessionStorage.removeItem('query');
     this.navCtrl.push(KpiPage);
   }
 

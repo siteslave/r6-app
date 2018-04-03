@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { KpiProvider } from '../../providers/kpi/kpi';
 import { ResultPage } from '../result/result';
 
+import * as _ from 'lodash';
+
 @IonicPage()
 @Component({
   selector: 'page-kpi',
@@ -12,6 +14,7 @@ import { ResultPage } from '../result/result';
 export class KpiPage {
 
   kpis = [];
+  tmpKpis = [];
 
   constructor(
     public navCtrl: NavController,
@@ -22,7 +25,14 @@ export class KpiPage {
   }
 
   ionViewWillEnter() {
-    this.getKpiList();
+    let query = sessionStorage.getItem('query');
+
+    if (query) {
+      this.doSearch(query);
+    } else {
+      this.getKpiList();
+    }
+    
   }
 
   getKpiList() {
@@ -38,6 +48,8 @@ export class KpiPage {
     this.kpiProvider.getList(thYear.toString())
       .subscribe((data: any) => {
         this.kpis = data;
+        this.tmpKpis = _.clone(this.kpis);
+
         loading.dismiss();
       });
 
@@ -45,6 +57,27 @@ export class KpiPage {
 
   goResult(kpi: any) {
     this.navCtrl.push(ResultPage, kpi);
+  }
+
+  getItems(event: any) {
+    this.kpis = [];
+
+    let query = event.target.value;
+    sessionStorage.setItem('query', query);
+
+    this.doSearch(query);
+  }
+
+  doSearch(query: any) {
+    if (query && query.trim() != '') {
+      let result = this.tmpKpis.filter((item) => {
+        return (item.title.indexOf(query) > -1);
+      });
+
+      this.kpis = result;
+    } else {
+      this.kpis = _.clone(this.tmpKpis);
+    }
   }
 
 }
