@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { KpiPageModule } from '../pages/kpi/kpi.module';
 import { KpiProvider } from '../providers/kpi/kpi';
 import { ResultPageModule } from '../pages/result/result.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ResultPageModule } from '../pages/result/result.module';
     SettingsPageModule,
     KpiPageModule,
     ResultPageModule,
+    LoginPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -40,7 +43,8 @@ import { ResultPageModule } from '../pages/result/result.module';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MemberProvider,
-    KpiProvider
+    KpiProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}
