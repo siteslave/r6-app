@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MembersPage } from '../members/members';
 import { SettingsPage } from '../settings/settings';
 import { KpiPage } from '../kpi/kpi';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -55,6 +56,11 @@ export class DashboardPage {
   goKpi() {
     sessionStorage.removeItem('query');
     this.navCtrl.push(KpiPage);
+  }
+
+  logout() {
+    sessionStorage.removeItem('token');
+    this.navCtrl.setRoot(LoginPage);
   }
 
 } // end class

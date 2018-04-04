@@ -8,6 +8,11 @@
 
   <ion-navbar color="danger">
     <ion-title>Dashboard</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,45 +20,33 @@
 
 <ion-content>
 
-<ion-slides autoplay="2000" pager style="height: 300px;">
+  <ion-slides autoplay="2000" pager style="height: 300px;">
 
-  <ion-slide>
-    <my-chart id="chart1" 
-    style="height: 280px; display: block;" 
-    chartId="chart1" 
-    chartType="column"
-    chartTitle="KPI 000001"
-    [categories]="categories1"
-    [series]="data1"
-    ></my-chart>
-  </ion-slide>
+    <ion-slide>
+      <my-chart id="chart1" style="height: 280px; display: block;" chartId="chart1" chartType="column" chartTitle="KPI 000001"
+        [categories]="categories1" [series]="data1"></my-chart>
+    </ion-slide>
 
-  <ion-slide>
-    <my-chart id="chart2" 
-    style="height: 280px; display: block;" 
-    chartId="chart2" 
-    chartType="line"
-    chartTitle="KPI 000002"
-    [categories]="categories2"
-    [series]="data2"
-    ></my-chart>
-  </ion-slide>
+    <ion-slide>
+      <my-chart id="chart2" style="height: 280px; display: block;" chartId="chart2" chartType="line" chartTitle="KPI 000002" [categories]="categories2"
+        [series]="data2"></my-chart>
+    </ion-slide>
 
-</ion-slides>
+  </ion-slides>
 
-<ion-list no-lines>
-  <button ion-item (click)="goMembers()" icon-start>
-    <ion-icon color="primary" name="contacts" item-start></ion-icon>
-    สมาชิก
-  </button>
-  <button ion-item (click)="goKpi()" icon-start>
-    <ion-icon color="secondary" name="keypad" item-start></ion-icon>
-    ตัวชี้วัด
-  </button>
-  <button ion-item (click)="goSettings()" icon-start>
-    <ion-icon color="danger" name="settings" item-start></ion-icon>
-    ตั้งค่า
-  </button>
-</ion-list>
+  <ion-list no-lines>
+    <button ion-item (click)="goMembers()" icon-start>
+      <ion-icon color="primary" name="contacts" item-start></ion-icon>
+      สมาชิก
+    </button>
+    <button ion-item (click)="goKpi()" icon-start>
+      <ion-icon color="secondary" name="keypad" item-start></ion-icon>
+      ตัวชี้วัด
+    </button>
+    <button ion-item (click)="goSettings()" icon-start>
+      <ion-icon color="danger" name="settings" item-start></ion-icon>
+      ตั้งค่า
+    </button>
+  </ion-list>
 
 </ion-content>
