@@ -47,8 +47,12 @@ export class KpiPage {
 
     this.kpiProvider.getList(thYear.toString())
       .subscribe((data: any) => {
-        this.kpis = data;
-        this.tmpKpis = _.clone(this.kpis);
+        if (data.ok) {
+          this.kpis = data.rows;
+          this.tmpKpis = _.clone(this.kpis);
+        } else {
+          console.log(data.message);
+        }
 
         loading.dismiss();
       });
